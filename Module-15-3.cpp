@@ -18,42 +18,29 @@
 #include <iostream>
 #include <vector>
 
+void insert_heap(std::vector<int> vec) {
+	return;
+}
+
+void print_vector(std::vector<int> vec) {
+	for (int i = 0; i < vec.size(); ++i)
+	{
+		std::cout << vec[i] << " ";
+	}
+	return;
+}
+
 int main()
 {
-	int vectorSize;
-	std::cout << "Input vector size: ";
-	std::cin >> vectorSize;
-	std::vector<int> userVector(vectorSize);
-
-	std::cout << "Input numbers: ";
+	std::vector<int> userVector(1);
 	int elements = 0;
 
-	for (int i = 0; i < userVector.size(); ++i)
-	{
+	while (elements != -2) {
+		std::cout << "Input numbers: ";
 		std::cin >> elements;
-		userVector[i] = elements;
+		userVector.push_back(elements);
+		insert_heap(userVector);
+		print_vector(userVector);
 	}
-
-	std::cout << "Input number to delete: ";
-	int deleteValue = 0;
-	std::cin >> deleteValue;
-	for (uint32_t i = 0; i < userVector.size(); ++i)
-	{
-		if (userVector[i] == deleteValue) {
-			//при помощи обмена перемещаем элемент в конец вектора
-			for (std::size_t j = i; j < userVector.size() - 1; ++j) {
-				std::swap(userVector[j], userVector[j + 1]);
-			}
-			userVector.pop_back();
-			//уменьшаем счётчик цикла что бы не пропустить следующий элемент
-			--i;
-		}
-	}
-
-	std::cout << "Result: ";
-	for (int i = 0; i < userVector.size(); ++i)
-	{
-		std::cout << userVector[i] << " ";
-	}
-
+	
 }
