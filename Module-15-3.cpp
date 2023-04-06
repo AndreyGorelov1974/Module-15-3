@@ -17,30 +17,31 @@
 Нужно удостовериться, что можно вывести требуемое число (может быть меньше пяти чисел).*/
 #include <iostream>
 #include <vector>
-
-void insert_heap(std::vector<int> vec) {
-	return;
-}
+#include <algorithm>
 
 void print_vector(std::vector<int> vec) {
 	for (int i = 0; i < vec.size(); ++i)
 	{
 		std::cout << vec[i] << " ";
 	}
+	std::cout << std::endl;
 	return;
 }
 
 int main()
 {
-	std::vector<int> userVector(1);
+	std::vector<int> userVector(0);
 	int elements = 0;
 
+	std::cout << "Input numbers: ";
+	std::cin >> elements;
+
 	while (elements != -2) {
+		userVector.push_back(elements);
+		std::sort(userVector.begin(), userVector.end());
+		print_vector(userVector);
 		std::cout << "Input numbers: ";
 		std::cin >> elements;
-		userVector.push_back(elements);
-		insert_heap(userVector);
-		print_vector(userVector);
 	}
 	
 }
