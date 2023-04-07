@@ -32,16 +32,26 @@ int main()
 {
 	std::vector<int> userVector(0);
 	int elements = 0;
+	int index = 0;
 
 	std::cout << "Input numbers: ";
 	std::cin >> elements;
 
 	while (elements != -2) {
-		userVector.push_back(elements);
-		std::sort(userVector.begin(), userVector.end());
+		if (elements == -1) {
+			std::cout << "Five element: " << userVector[4] << std::endl;
+		}
+		else {
+			userVector.push_back(elements);
+			index = userVector.size() - 1;
+			while ((index > 0) && (userVector[index] < userVector[index - 1])) {
+				std::swap(userVector[index], userVector[index - 1]);
+				--index;
+			}
+		}
 		print_vector(userVector);
 		std::cout << "Input numbers: ";
 		std::cin >> elements;
 	}
-	
+
 }
