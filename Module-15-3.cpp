@@ -20,11 +20,7 @@
 #include <algorithm>
 
 void print_vector(std::vector<int> vec) {
-	for (int i = 0; i < vec.size(); ++i)
-	{
-		std::cout << vec[i] << " ";
-	}
-	std::cout << std::endl;
+
 	return;
 }
 
@@ -49,8 +45,11 @@ int main()
 				--index;
 			}
 		}
-		print_vector(userVector);
-		std::cout << "Input numbers: ";
+		for (int i = 0; i < userVector.size(); ++i)
+		{
+			std::cout << userVector[i] << " ";
+		}
+		std::cout << std::endl;		std::cout << "Input numbers: ";
 		std::cin >> elements;
 	}
 
