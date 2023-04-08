@@ -19,10 +19,6 @@
 #include <vector>
 #include <algorithm>
 
-void print_vector(std::vector<int> vec) {
-
-	return;
-}
 
 int main()
 {
@@ -49,7 +45,8 @@ int main()
 		{
 			std::cout << userVector[i] << " ";
 		}
-		std::cout << std::endl;		std::cout << "Input numbers: ";
+		std::cout << std::endl;
+		std::cout << "Input numbers: ";
 		std::cin >> elements;
 	}
 
