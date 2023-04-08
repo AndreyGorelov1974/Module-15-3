@@ -17,14 +17,12 @@
 Нужно удостовериться, что можно вывести требуемое число (может быть меньше пяти чисел).*/
 #include <iostream>
 #include <vector>
-#include <algorithm>
-
 
 int main()
 {
 	//инициализируем вектор 
 	std::vector<int> userVector(0);
-	//инициализируем переменную для ввода элемента массива 
+	//инициализируем переменную для ввода элемента вектора 
 	int elements = 0;
 	//инициализируем индекс для сортировки 
 	size_t index = 0;
@@ -43,7 +41,7 @@ int main()
 				std::cout << "There are still less than five elements in the array!" << std::endl;
 			}
 			else {
-				//если больше 5 выводим 5 по порядку элемент
+				//если больше или равно 5 выводим 5 по порядку элемент
 				std::cout << "Five element: " << userVector[4] << std::endl;
 			}
 		}
