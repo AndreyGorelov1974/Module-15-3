@@ -53,17 +53,24 @@ int main()
 			if (index < sizeArray) {
 				arr[index] = element;
 				++index;
+				//инициализируем индекс для сортировки
+				int indexSort = index - 1;
+				//двигаемего к началу на своё место по порядку среди значащих элементов
+				while ((indexSort > 0) && (arr[indexSort] < arr[indexSort - 1])) {
+					std::swap(arr[indexSort], arr[indexSort - 1]);
+					--indexSort;
+				}
 			}
 			//если больше вставляем в конец массива
-			else {
+			else  if (arr[sizeArray - 1] >= element){
 				arr[sizeArray - 1] = element;
-			}
-			//инициализируем индекс для сортировки
-			int indexSort = index - 1;
-			//двигаемего к началу на своё место по порядку среди значащих элементов
-			while ((indexSort > 0) && (arr[indexSort] < arr[indexSort - 1])) {
-				std::swap(arr[indexSort], arr[indexSort - 1]);
-				--indexSort;
+				//инициализируем индекс для сортировки
+				int indexSort = sizeArray - 1;
+				//двигаемего к началу на своё место по порядку среди значащих элементов
+				while ((indexSort > 0) && (arr[indexSort] < arr[indexSort - 1])) {
+					std::swap(arr[indexSort], arr[indexSort - 1]);
+					--indexSort;
+				}
 			}
 		}
 		//вывод отсортированного массива
