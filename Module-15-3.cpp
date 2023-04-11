@@ -16,55 +16,64 @@
 Советы и рекомендации
 Нужно удостовериться, что можно вывести требуемое число (может быть меньше пяти чисел).*/
 #include <iostream>
-#include <vector>
+
+//размер массива
+const int sizeArray = 5;
 
 int main()
 {
-	//инициализируем вектор 
-	std::vector<int> userVector(0);
+	//инициализируем массив
+	int arr[sizeArray]{};
 	//инициализируем переменную для ввода элемента вектора 
-	int elements = 0;
-	//инициализируем индекс для сортировки 
-	size_t index = 0;
+	int element = 0;
+	//инициализируем индекс для вставки элементов 
+	int index = 0;
 
 	//ввод первого элемента
 	std::cout << "Input numbers: ";
-	std::cin >> elements;
+	std::cin >> element;
 
 	//основной цикл продолжается пока не ввели -2
-	while (elements != -2) {
+	while (element != -2) {
 		//если ввели -1 
-		if (elements == -1) {
-			//проверяем длинну вектора
-			if (userVector.size() < 5) {
-				//если меньше 5 выводим предупреждение
+		if (element == -1) {
+			//проверяем количество знчащих элементов массива
+			if (index < sizeArray) {
+				//если меньше sizeArray выводим предупреждение
 				std::cout << "There are still less than five elements in the array!" << std::endl;
 			}
 			else {
-				//если больше или равно 5 выводим 5 по порядку элемент
-				std::cout << "Five element: " << userVector[4] << std::endl;
+				//если больше или равно sizeArray выводим sizeArray по порядку элемент
+				std::cout << "Five element: " << arr[sizeArray - 1] << std::endl;
 			}
 		}
-		//если ввели новый элемент вектора
+		//если ввели новый элемент массива
 		else {
-			//вставляем его в конец вектора
-			userVector.push_back(elements);
-			//устанавливаем индекс на новый элемент
-			index = userVector.size() - 1;
-			//двигаемего к началу на своё место по порядку
-			while ((index > 0) && (userVector[index] < userVector[index - 1])) {
-				std::swap(userVector[index], userVector[index - 1]);
-				--index;
+			//если элементов меньше sizeArray вставляем за последним значащим элементом
+			if (index < sizeArray) {
+				arr[index] = element;
+				++index;
+			}
+			//если больше вставляем в конец массива
+			else {
+				arr[sizeArray - 1] = element;
+			}
+			//инициализируем индекс для сортировки
+			int indexSort = index - 1;
+			//двигаемего к началу на своё место по порядку среди значащих элементов
+			while ((indexSort > 0) && (arr[indexSort] < arr[indexSort - 1])) {
+				std::swap(arr[indexSort], arr[indexSort - 1]);
+				--indexSort;
 			}
 		}
-		//вывод отсортированного вектора
-		for (int i = 0; i < userVector.size(); ++i)
+		//вывод отсортированного массива
+		for (int i = 0; i < sizeArray; ++i)
 		{
-			std::cout << userVector[i] << " ";
+			std::cout << arr[i] << " ";
 		}
 		std::cout << std::endl;
 		//ввод следующего элемента
 		std::cout << "Input numbers: ";
-		std::cin >> elements;
+		std::cin >> element;
 	}
 }
